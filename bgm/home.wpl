@@ -1,0 +1,45 @@
+<?wpl version="1.0"?>
+<smil>
+    <head>
+        <meta name="Generator" content="Microsoft Windows Media Player -- 11.0.5721.5280"/>
+        <meta name="AverageRating" content="0"/>
+        <meta name="TotalDuration" content="4591"/>
+        <meta name="ItemCount" content="31"/>
+        <title>home</title>
+    </head>
+    <body>
+        <seq>
+            <media src="bgm\Oasis- Some Might Say.mp3"/>
+            <media src="F:\PROJECT\bgm\oasis-cigarettesandalcohol.mid"/>
+            <media src="F:\PROJECT\bgm\oasis-dont_look_back_in_anger.mid"/>
+            <media src="F:\PROJECT\bgm\oasis-somemightsay.mid"/>
+            <media src="F:\PROJECT\bgm\queen - dont stop me now.mid"/>
+            <media src="F:\PROJECT\bgm\queen - i was born to love you.mid"/>
+            <media src="F:\PROJECT\bgm\queen - keep yourself alive.mid"/>
+            <media src="F:\PROJECT\bgm\sfmricag.mid"/>
+            <media src="F:\PROJECT\bgm\Starsailor - In The Crossfire.mp3"/>
+            <media src="F:\PROJECT\bgm\Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3"/>
+            <media src="F:\PROJECT\bgm\carry_on_my_wayward_son.mid"/>
+            <media src="F:\PROJECT\bgm\coldplay-viva_la_vida.mid"/>
+            <media src="F:\PROJECT\bgm\Dust_in_the_Wind.mid"/>
+            <media src="F:\PROJECT\bgm\Kansas - Carry On Wayward Son.mp3"/>
+            <media src="F:\PROJECT\bgm\Kansas - Dust In The Wind.mp3"/>
+            <media src="F:\PROJECT\bgm\Kansas - Song For America.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Bliss.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Exogenesis_ Symphony, Pt. 1_ Over.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Exogenesis_ Symphony, Pt. 2_ Cros.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Feeling Good.mp3"/>
+            <media src="F:\PROJECT\bgm\muse - plug in baby.mid"/>
+            <media src="F:\PROJECT\bgm\Muse - Resistance.mp3"/>
+            <media src="F:\PROJECT\bgm\muse - sing for absolution.mid"/>
+            <media src="F:\PROJECT\bgm\Muse - Soldier&apos;s Poem.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Starlight.mp3"/>
+            <media src="F:\PROJECT\bgm\Muse - Take a Bow.mp3"/>
+            <media src="F:\PROJECT\bgm\muse - time is running out.mid"/>
+            <media src="F:\PROJECT\bgm\Muse - Uprising.mp3"/>
+            <media src="F:\PROJECT\bgm\Nirvana - Come As You Are.mp3"/>
+            <media src="F:\PROJECT\bgm\oasis - champagne super nova.mid"/>
+            <media src="F:\PROJECT\bgm\Oasis - Don&apos;t Look Back In Anger.mp3"/>
+        </seq>
+    </body>
+</smil>

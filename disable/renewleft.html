@@ -1,0 +1,111 @@
+<html>
+	<head>
+
+	</head>
+	<style type="text/css">
+		#buttonb
+		{
+			background-color:black;
+			color:white;
+			border:0;
+		}
+	</style>
+	<SCRIPT language="javascript">
+		song=new Array();		//배경음악 목록 배열
+			song[0]="carry_on_my_wayward_son.mid";
+			song[1]="coldplay-viva_la_vida.mid";
+			song[2]="Dust_in_the_Wind.mid";
+			song[3]="muse - plug in baby.mid";
+			song[4]="muse - sing for absolution.mid";
+			song[5]="muse - time is running out.mid";
+			song[6]="oasis - champagne super nova.mid";
+			song[7]="oasis-cigarettesandalcohol.mid";
+			song[8]="oasis-dont_look_back_in_anger.mid";
+			song[9]="oasis-somemightsay.mid";
+			song[13]="sfmricag.mid";
+			song[14]="Kansas - Carry On Wayward Son.mp3";
+			song[15]="Kansas - Dust In The Wind.mp3";
+			song[16]="Kansas - Song For America.mp3";
+			song[17]="Muse - Bliss.mp3";
+			song[18]="Muse - Exogenesis_ Symphony, Pt. 1_ Over.mp3";
+			song[19]="Muse - Exogenesis_ Symphony, Pt. 2_ Cros.mp3";
+			song[10]="queen - dont stop me now.mid";
+			song[11]="queen - i was born to love you.mid";
+			song[12]="queen - keep yourself alive.mid";
+			song[20]="Muse - Feeling Good.mp3";
+			song[21]="Muse - Resistance.mp3";
+			song[22]="Muse - Soldier's Poem.mp3";
+			song[23]="Muse - Starlight.mp3";
+			song[24]="Muse - Take a Bow.mp3";
+			song[25]="Muse - Uprising.mp3";
+			song[26]="Nirvana - Come As You Are.mp3";
+			song[27]="Oasis - Don't Look Back In Anger.mp3";
+			song[28]="Oasis- Some Might Say.mp3";
+			song[29]="Starsailor - In The Crossfire.mp3";
+			song[30]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+	function play()
+	{
+		player.controls.play();
+	}
+	function pause()
+	{
+		player.controls.pause();
+	}
+	function stop()
+	{
+		player.controls.stop();
+	}
+	function next()
+	{
+		player.controls.next();
+	}
+	function pre()
+	{
+		player.controls.previous();
+	}
+	function volup()
+	{
+		player.settings.volume+=10;
+	}
+	function voldown()
+	{
+		player.settings.volume-=10;
+	}
+	</script>
+<BODY bgcolor="black" text="white">
+	<object id="player" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" type="application/x-oleobject" width="0" height="0"> 
+		<param name="URL" value="bgm/home.wpl">
+		<param name="uiMode" value="none">
+		<param name="Volume" value="50">
+		<param name="ShowGotoBar" value="true"> 
+	</object> 
+			<table width="200" height="40" border='0'>
+				<tr>
+					<td>
+						♬
+					</td>
+					<td>
+						<script language="javascript">
+							document.write(player.currentMedia.getiteminfo('Title'));
+							document.write("<br>"+player.currentMedia.getiteminfo('Duration'));
+						</script>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+							<input type="button" id="buttonb" name="pre"	value="《"	size="3"	onclick="pre();">&nbsp;
+							<input type="button" id="buttonb" name="stop"	value="■"	size="3"	onclick="stop()">&nbsp;
+							<input type="button" id="buttonb" name="Play"	value="▶"	size="3"	onclick="play()">&nbsp;
+							<input type="button" id="buttonb" name="PAUSE"	value="||"	size="3"	onclick="pause()">&nbsp;
+							<input type="button" id="buttonb" name="next"	value="》"	size="3"	onclick="next()">&nbsp;
+							<input type="button" id="buttonb" name="NEXT"	value="?"	size="3"	onclick="rand()">&nbsp;
+							<input type="button" id="buttonb" name="up"		value="▲"	size="3"	onclick="volup()">
+							<input type="button" id="buttonb" name="down"	value="▼"	size="3"	onclick="voldown()"> 
+					</td> 
+				</tr>
+			</table>
+	</p>
+
+</body>
+</html>
+

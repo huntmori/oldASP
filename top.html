@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>
+		</title>
+		<Script Type="text/javascript" Language="javascript">
+			function protoggle() 
+			{
+				pro.style.display = pro.style.display == "" ? "none" : "";
+			}
+			
+			function galtoggle() 
+			{
+				gal.style.display = gal.style.display == "" ? "none" : "";
+			}
+			
+		</script>
+	</head>
+	<style>
+		#banner 		{position:absolute; left:3;top:3; width:500; }
+		#bannershadow 	{position:absolute; left:2;top:2; width:500; }
+		#profile		{position:absolute; left:400;top:0; width:100; height:100;}
+		#galtop			{position:absolute; left:550;top:0; width:100; height:100;}
+		#home			{position:absolute; left:250;top:0; width:100; height:100;}
+		#re				{position:absolute; left:700;top:0; width:90;}
+		#ge				{position:absolute; left:850;top:0; width:90;}
+	</style>
+
+
+<body bgcolor="black" text="white" link="white" alink="white" vlink="white" >
+	<div id="home" style="position:absoulte; left:300; top:0;">
+		<span><Font color="white" size="2"><a href="smain.html" target="smain">HOME</a></font></span>
+	</div>
+	<div style="width:200px; border: 1px ;" align=center style="position:absolute; left:350;top:0; width:100; height:100;">
+		<span><b><font color="WHITE" size="2"><a href="javascript:protoggle()">PROFILE</a></font></b></a></span>
+			<div id="pro" style="display: none; width:200px; border: 1px">
+				<font size="2"><a href="prfile.html" target="smain">개인프로필</a> &nbsp;&nbsp;<a href="hopro.html" target="smain">홈페이지소개</a></font>
+			</div>
+	</div>
+
+	<div style="width:200px; border: 1px;" align=center style="position:absolute; left:500;top:0; width:100; height:100;">
+		<span><b><font color="WHITE" size="2"><a href="javascript:galtoggle()">GALLAY</a></font></b></a></span>
+			<div id="gal" style="display: none; width:200px; border: 1px">
+				<font size="2"><a href="gal/galwork.html" target="smain">개인작업물</a> &nbsp;&nbsp;<a href="gal/galdata.html" target="smain">참고자료</a></font>
+			</div>
+	</div>
+
+	<DIV Id="re">
+		<span><b><font color="WHITE" size="2"><a HREF="board\review\List.asp" Target="smain">BOARD</font></b></span>
+	</div>
+	<DIV Id="ge">
+		<span><b><font color="WHITE" size="2"><a HREF="board/guest/GuestList.asp" Target="smain">GUEST</font></b></span>
+	</div>
+</body>
+</html>

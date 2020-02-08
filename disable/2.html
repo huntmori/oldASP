@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+<TITLE>음악 재생</TITLE>
+<STYLE>
+ td
+ {
+  font-size:9pt;
+ }
+</STYLE>
+<!-- 볼륨조절 슬라이더 관련 컴포넌트 관련 -->
+<SCRIPT src = "http://webfx.eae.net/dhtml/slider/css/bluecurve/bluecurve.css" />
+<!-- 볼륨조절 슬라이더 관련 컴포넌트 관련 -->
+<SCRIPT>
+ var slider;
+ var nowTime;
+ var totalTime;
+ var isInterval = false;
+ var progressBarWidth = 200;
+ /**
+  * 음악 재생 시작
+  */
+ function startPlay()
+ {
+  // 기존 음악 중지
+  stopMusic();
+  var addr = form.file.value;
+  Player.URL = addr;
+  // 노래 제목 삽입
+  titleDiv.innerHTML = Player.currentMedia.name;
+  // 변경된 프로그레스바 크기 지정
+  progressBarWidth = document.getElementById("progress_td").clientWidth;
+  // 프로그레스바 초기화
+  showProgressBar(0);
+  // 음악 재생
+  playMusic();
+  // 볼륨조절 슬라이더 셋팅
+  slider.setValue( getVolume() );
+  // 반복 체크 값 true
+  isInterval = true;
+  startTimeInterval(); // 재생시간 보기
+ }
+ /**
+  * 반복적으로 재생시간을 보여주는 함수를 실행
+  */
+ function startTimeInterval()
+ {
+  id = setInterval( "showPlayTime()", 500 );
+ }
+ /**
+  * 재생시간 출력
+  */
+ function showPlayTime()
+ {
+  try
+  {
+   nowTime   = Math.floor( Player.controls.currentPosition ); // 현재 재생시간 추출
+   totalTime = Math.floor( Player.currentMedia.duration ); // 총 재생시간 추출
+   nowTimeDiv.innerHTML  = changeTimeType( nowTime );
+   fullTimeDiv.innerHTML = changeTimeType( totalTime );
+   percentage = Math.floor( ( nowTime / totalTime ) * 100 );
+   // 재생바 출력
+   showProgressBar( percentage );
+  }
+  catch( e )
+  {
+   if( isInterval == true )
+   {
+    stopMusic();
+    alert("재생 가능한 파일이 아닙니다.");
+    clearInterval( id );
+    isInterval = false;
+   }
+  }
+ }
+ /**
+  * 재생바 출력 부분
+  */
+ function showProgressBar( percentage )
+ {
+  // 반드시 퍼센티지가 숫자로 들어올 때
+  if( isNaN( percentage ) == false )
+  {
+   // 현재 설정해놓은 TD의 크기가 200이므로 100% 기준 * 2로 잡음
+   document.getElementById("progress").style.width = Math.floor( (progressBarWidth / 100) * percentage );
+   percentageDiv.innerHTML = percentage + "%";
+  }
+ }
+ /**
+  * 초로 되어있는 시간을 분/초 나눠서 보여줌
+  *
+  *@param time 초단위의 재생시간
+  */
+ function changeTimeType( time )
+ {
+  var result;
+  // 시간이 1분 초과했을 경우
+  if( time >= 60 )
+  {
+   result = Math.floor( time / 60 ) + "분 ";
+   if( time % 60 != 0 ) result += time % 60 + "초";
+  }
+  else
+  {
+   result = time + "초";
+  }
+  
+  return result;
+ }
+ /**
+  * 음악 일시 정지
+  */
+ function pauseMusic()
+ {
+  Player.controls.pause();
+  return false;
+ }
+ /**
+  * 음악 정지
+  */
+ function stopMusic()
+ {
+  Player.controls.stop();
+  return false;
+ }
+ /**
+  * 음악 앞으로 가기
+  */
+ function forwardMusic()
+ {
+  Player.controls.fastForward();
+  return false;
+ }
+ /**
+  * 음악 뒤로 가기
+  */
+ function reverseMusic()
+ {
+  Player.controls.fastReverse();
+  return false;
+ }
+ /**
+  * 음악 재생
+  */
+ function playMusic()
+ {
+  Player.controls.play();
+  return false;
+ }
+ /**
+  * 볼륨 설정
+  * 
+  * @param vol 0부터 100사이의 long 데이터
+  */
+ function setVolume( vol )
+ {
+  Player.settings.volume = vol;
+ }
+ /**
+  * 볼륨값 추출
+  *
+  * @return 0부터 100사이의 long 데이터
+  */
+ function getVolume()
+ {
+  return Player.settings.volume;
+ }
+ /**
+  * 볼륨 조절용 슬라이더 출력
+  */
+ function showSliderForVolume()
+ {
+  slider = new Slider( document.getElementById("slider-1"), document.getElementById("slider-input-1") );
+  // 볼륨 조절시 데이터 셋팅을 위한 이벤트 설정
+  slider.onchange = function () {
+   document.getElementById("volSpan").innerHTML = slider.getValue();
+   setVolume( slider.getValue() ); // 볼륨 조절
+  };
+ }
+</SCRIPT>
+</HEAD>
+<BODY onLOad = "showSliderForVolume()">
+<OBJECT id = "Player" height = "0" width = "0" classid = "CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"></OBJECT>
+<TABLE border = "1" width = "250">
+<TR height = "25">
+ <TD colspan = "2" align = "center">제목 : <SPAN id = "titleDiv"></SPAN></TD>
+</TR>
+<TR height = "15">
+ <TD width = "80%" id = "progress_td">
+ <!-- 재생률 표시하는 테이블 부분 -->
+  <SPAN id = "progress" style = "width:0px;height:10px;overflow:hidden;background-color:#336699"/></TD>
+ </TD> 
+ <TD align = "center"><SPAN id = "percentageDiv">0%</SPAN></TD>
+</TR>
+<TR height = "25">
+ <TD colspan = "2" align = "center">
+ <!-- 재생시간 출력 부분 -->
+  재생시간 : <SPAN id = "nowTimeDiv">-</SPAN>, 총재생시간 : <SPAN id = "fullTimeDiv">-</SPAN>
+ </TD>
+</TR>
+<TR height = "25">
+ <TD colspan = "2" align = "center">
+ <!-- 재생버튼 부분 -->
+  <A href = "#" onClick = "return playMusic()">재생</A>
+  &nbsp;&nbsp;
+  <A href = "#" onClick = "return pauseMusic()">일시정지</A>
+  &nbsp;&nbsp;
+  <A href = "#" onClick = "return stopMusic()">정지</A>
+  &nbsp;&nbsp;
+  <A href = "#" onClick = "return reverseMusic()">◀◀</A>
+  &nbsp;&nbsp;
+  <A href = "#" onClick = "return forwardMusic()">▶▶</A>
+ </TD>
+</TR>
+<TR>
+ <TD colspan = "2" align = "center">
+ <!-- 볼륨조절 슬라이더 및 볼륨 상태 출력 부분 -->
+  <TABLE width = "100%">
+  <TR height = "25">
+   <TD width = "80%">
+    <DIV class = "slider" id = "slider-1" tabIndex = "1" style = "width:100%">
+     <INPUT class = "slider-input" id = "slider-input-1" name = "slider-input-1"/>
+    </DIV>
+   </TD>
+   <TD width = "20%" align = "center"><SPAN id = "volSpan">0</SPAN>%</TD>
+  </TR>
+  </TABLE>
+ </TD>
+</TR>
+</TABLE>
+<FORM name = "form">
+<INPUT type = "file" name = "file" onchange = "startPlay()">
+</FORM>
+</BODY>
+</HTML>
+[출처] 자바스크립트로 쥬크박스 재생 시간 및 재생률 표시|작성자 건호랩

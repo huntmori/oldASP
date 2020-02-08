@@ -1,0 +1,105 @@
+<html>
+	<head>
+	<title>
+	</title>
+	</head>
+<body bgcolor="black" text="white">
+		<script type="text/javascript" LANGUAGE="Javascript">
+				a=new Date();
+				var month=new Array(12);	//월 변환
+				var day=new Array(7);		//요일 변환
+				day[0]="일";
+				day[1]="월";
+				day[2]="화";
+				day[3]="수";
+				day[4]="목";
+				day[5]="금";
+				day[6]="토";
+
+				//document.write(a.getYear()+"년 "+month[a.getMonth()]+a.getDate()+"일  "+day[a.getDay()]+a.getHours()+"시 "+a.getMinutes()+"분");
+				document.write("<table align='left' width='70' border='0'><tr height='5'>");
+				document.write("<td width='60'><font size='1'>Year</font></td>");
+				document.write("<tr>");
+				for(county=5;county>0;county--)
+				{
+					document.write("<td width='100'>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7f7f7f>");
+						if((a.getYear()-county+3)==a.getYear())
+						{
+							document.write("<font color='red'>");
+						}
+					document.write(a.getYear()-county+3+" ");
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</tr>");
+				document.write("<td width='70'><font size='1'>Month</font></td>");
+				document.write("<tr>");
+				for(countm=1;countm<13;countm++)
+				{
+					if(countm%8=='0')
+					{
+						document.write("<tr>");
+					}
+					document.write("<td>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7F7F7F>");
+
+						if(countm-1==a.getMonth())
+						{
+							document.write("<font color='red'>");
+						}
+					
+					document.write(countm);
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</tr>");
+				document.write("<td width='67'><font size='1'>Date</font></td>");
+				document.write("<tr>");
+				for(countda=0;countda<31;countda++)
+				{
+					if(countda%7=='0')
+					{
+						document.write("<tr>");
+					}
+					document.write("<td width='24'>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7F7F7F>");
+						if(countda==a.getDate())
+						{
+							document.write("<font color='red'>");
+						}
+					document.write(countda);
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("<td width='50'><font size='1'>Day</font></td>");
+				document.write("<tr>");
+				for(countd=0;countd<7;countd++)
+				{
+					document.write("<td width='107'>");
+					document.write("<font size='1' color=#7F7F7F>");
+						if(day[countd]==day[a.getDay()])
+						{
+							document.write("<font color='red'>");
+						}
+					document.write("<center>");
+					document.write(day[countd]);
+					document.write("</center>");
+					document.write("</font>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</tr>");
+				document.write("</table>");	
+		</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<html>
+	<head>
+	<style type="text/css">
+		#buttonb
+		{
+			background-color:black;
+			color:white;
+			border:0;
+			scroll-color:black;
+		}
+		
+	</style>
+		<script language="JavaScript">
+			song=new Array();		//배경음악 목록 배열
+				song[0]="carry_on_my_wayward_son.mid";
+				song[1]="coldplay-viva_la_vida.mid";
+				song[2]="Dust_in_the_Wind.mid";
+				song[3]="muse - plug in baby.mid";
+				song[4]="muse - sing for absolution.mid";
+				song[5]="muse - time is running out.mid";
+				song[6]="oasis - champagne super nova.mid";
+				song[7]="oasis-cigarettesandalcohol.mid";
+				song[8]="oasis-dont_look_back_in_anger.mid";
+				song[9]="oasis-somemightsay.mid";
+				song[10]="queen - dont stop me now.mid";
+				song[11]="queen - i was born to love you.mid";
+				song[12]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+				song[13]="sfmricag.mid";
+				song[14]="Kansas - Carry On Wayward Son.mp3";
+				song[15]="Kansas - Dust In The Wind.mp3";
+				song[16]="Kansas - Song For America.mp3";
+				song[17]="Muse - Bliss.mp3";
+				song[18]="Muse - Exogenesis_ Symphony, Pt. 1_ Over.mp3";
+				song[19]="Muse - Exogenesis_ Symphony, Pt. 2_ Cros.mp3";
+				song[20]="Muse - Feeling Good.mp3";
+				song[21]="Muse - Resistance.mp3";
+				song[22]="Muse - Soldier's Poem.mp3";
+				song[23]="Muse - Starlight.mp3";
+				song[24]="Muse - Take a Bow.mp3";
+				song[25]="Muse - Uprising.mp3";
+				song[26]="Nirvana - Come As You Are.mp3";
+				song[27]="Oasis - Don't Look Back In Anger.mp3";
+				song[28]="Oasis- Some Might Say.mp3";
+				song[29]="Starsailor - In The Crossfire.mp3";
+				song[30]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+		</script>
+		<script language="JavaScript">
+			function play()
+			{
+				var movieContent="";
+					movieContent +='<object id="bgmusic" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" type="application/x-oleobject" width="0" height="0">';
+					movieContent +='<param name="src" value="'+document.all.sel.options[bgnum].value+'"></param> ';
+					movieContent +='<param name="AllowChangeDisplaySize" value="false">';
+					movieContent +='<param name="AnimationAtStart" value="false">';
+					movieContent +='<param name="AutoSize" value="false">';
+					movieContent +='<param name="EnableContextMenu" value="false">';
+					movieContent +='<param name="EnableFullScreenControls" value="false">';
+					movieContent +='<param name="EnablePositionControls" value="false">';
+					movieContent +='<param name="EnableTracker" value="false">';
+					movieContent +='<param name="PlayCount" value="0">';
+					movieContent +='<param name="ShowAudioControls" value="false">';
+					movieContent +='<param name="ShowCaptioning" value="false">';
+					movieContent +='<param name="ShowControls" value="false">';
+					movieContent +='<param name="ShowDisplay" value="false">';
+					movieContent +='<param name="ShowGotoBar" value="false">';
+					movieContent +='<param name="ShowPositionControls" value="false">';
+					movieContent +='<param name="ShowStatusBar" value="false">';
+					movieContent +='<param name="ShowTracker" value="false">';
+					movieContent +='<param name="TransparentAtStart" value="true">';
+					movieContent +='<param name="AudioStream" value="-1">';
+					movieContent +='<param name="AutoStart" value="true">';
+					movieContent +='<param name="AllowScan" value="true">';
+					movieContent +='<param name="AutoRewind" value="false">';
+					movieContent +='<param name="Balance" value="0">';
+					movieContent +='<param name="BufferingTime" value="5">';
+					movieContent +='<param name="ClickToPlay" value="true">';
+					movieContent +='<param name="CursorType" value="0">';
+					movieContent +='<param name="CurrentPosition" value="-1">';
+					movieContent +='<param name="CurrentMarker" value="0">';
+					movieContent +='<param name="DisplayBackColor" value="0">';
+					movieContent +='<param name="DisplayMode" value="0">';
+					movieContent +='<param name="DisplaySize" value="0">';
+					movieContent +='<param name="Enabled" value="true">';
+					movieContent +='<param name="InvokeURLs" value="true">';
+					movieContent +='<param name="Language" value="-1">';
+					movieContent +='<param name="Mute" value="false">';
+					movieContent +='<param name="PreviewMode" value="false">';
+					movieContent +='<param name="Rate" value="1">';
+					movieContent +='<param name="SelectionStart" value="-1">';
+					movieContent +='<param name="SelectionEnd" value="-1">';
+					movieContent +='<param name="SendOpenStateChangeEvents" value="false">';
+					movieContent +='<param name="SendWarningEvents" value="false">';
+					movieContent +='<param name="SendErrorEvents" value="false">';
+					movieContent +='<param name="SendKeyboardEvents" value="false">';
+					movieContent +='<param name="SendMouseClickEvents" value="false">';
+					movieContent +='<param name="SendMouseMoveEvents" value="false">';
+					movieContent +='<param name="SendPlayStateChangeEvents" value="false">';
+					movieContent +='<param name="VideoBorderWidth" value="0">';
+					movieContent +='<param name="VideoBorderColor" value="0">';
+					movieContent +='<param name="VideoBorder3D" value="false">';
+					movieContent +='<param name="Volume" value="-600">';
+					movieContent +='<param name="WindowlessVideo" value="false">';
+				movieContent += '</object>'
+				document.all.show.innerHTML =document.all.sel.options[bgnum].value;
+ 				document.all.player.innerHTML = movieContent;
+				document.all.bgmusic.play();
+				
+			}
+			function change()
+			{
+				if(bgnum == 31){bgnum = 1;}
+				if(bgnum == 0){bgnum = 29;}
+					bgmusic.Filename ="bgm/"+song[bgnum];
+			}
+		</script>
+		<Script language="JavaScript">
+			function to_next()
+			{
+				bgnum = bgnum + 1;
+				document.all.show.innerHTML =document.all.sel.options[bgnum].value;
+ 				document.all.player.innerHTML = movieContent;
+				document.all.bgmusic.play();
+				if(bgnum == 30){bgnum = 1;}
+					bgmusic.Filename ="bgm/"+song[bgnum];
+			}
+		</Script>
+		<script language="JScript" for="bgmusic" event="EndOfStream()">
+			setTimeout("to_next()", 100);
+		</script>
+	</head>
+<body bgcolor="black" text="white" link="white" alink="white" vlink="white">
+	<script language="JavaScript">
+		bgnum=Math.floor(Math.random()*30) + 1;
+		bgmusic.Filename ="bgm/"+song[bgnum];
+	</script>
+	<table width="200" height="40" border='0'>
+		<tr>
+			<td width="5">
+				♬
+			</td>
+			<TD align = "center">
+			<div id="show" style="width:200px; border: 1px">
+			</div>
+			<div id="player" style="display:none">
+			</div>
+			</TD>
+		</tr>
+		<tr>
+			<td colspan='2'>
+				<input type="button" id="buttonb" name="pre"	value="《"	size="3"	onclick="javascript:bgnum-1;change();">&nbsp;
+				<input type="button" id="buttonb" name="stop"	value="■"	size="3"	onclick="bgmusic.stop()">&nbsp;
+				<input type="button" id="buttonb" name="Play"	value="▶"	size="3"	onclick="play()">&nbsp;
+				<input type="button" id="buttonb" name="PAUSE"	value="||"	size="3"	onclick="bgmusic.pause()">&nbsp;
+				<input type="button" id="buttonb" name="next"	value="》"	size="3"	onclick="javascript:bgnum=bgnum+1;change();">&nbsp;
+				<input type="button" id="buttonb" name="NEXT"	value="?"	size="3"	onclick="javascript:bgnum=Math.floor(Math.random()*30)+1;change();">&nbsp;
+				<input type="button" id="buttonb" name="up"		value="▲"	size="3"	onclick="volup()">
+				<input type="button" id="buttonb" name="down"	value="▼"	size="3"	onclick="voldown()">
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2'>
+			  <select name="sel" id=buttonb size="7" width="190" style="width:200px">
+				<script language="javascript">
+				for(i=0;i<31;i++)
+				{
+					document.write('<option value="'+song[i]+'">'+song[i]+'</option>');
+				}
+		</script>
+  </select>
+				</script>
+		</table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<HTML>
+	<HEAD>
+		<SCRIPT LANGUAGE="JavaScript"> 
+			<!--
+			var n=0;
+
+			function randommu(){
+				//넷스케이프에서 랜덤 연주
+				if(document.layers){
+					if(document.embeds[n].IsPlaying()==false){
+						n=Math.floor(Math.random()*document.embeds.length);
+						document.embeds[n].play();
+					}
+					setTimeout("randommu()",10000)
+				}
+
+		//익스플로러에서 랜덤 연주
+				else if(document.all){
+					if(document.embeds[n].PlayState !=2){
+						n=Math.floor(Math.random()*document.embeds.length);
+						document.embeds[n].play();
+					}
+					setTimeout("randommu()",10000)
+				}
+}
+//-->
+		</SCRIPT>
+	</HEAD>
+<BODY onload="randommu()">
+	<CENTER>
+		<H3>배경음악을 무작위로 연속적으로 들려줍니다.</H3>
+		<IMG SRC="audio1.gif" WIDTH="93" HEIGHT="55"><IMG SRC="audio2.gif"	WIDTH="113" HEIGHT="55">
+	</CENTER>
+	<EMBED SRC="sfmricag.mid" HIDDEN=true AUTOSTART=false LOOP=false>
+	<EMBED SRC="Starsailor - In The Crossfire.mp3" HIDDEN=true AUTOSTART=false LOOP=false>
+	<EMBED SRC="queen - i was born to love you.mid" HIDDEN=true AUTOSTART=false LOOP=false>
+</BODY>
+</HTML>

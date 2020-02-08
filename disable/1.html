@@ -1,0 +1,256 @@
+<html>
+<head>
+<title>커뮤니티</title>
+<script language="javascript">
+<!--
+
+/**
+ * 기본생성자
+ * @param obj:Player 객체
+ */
+function WindowMediaPlayer(obj,url,autostart)
+{
+ this.player = obj;
+    this.player.url = url;
+    this.player.settings.autoStart = autostart;
+    this.player.settings.rate = 1;
+    if (autostart) player_play();
+}
+/**
+ * 미디어를 재생한다.
+ * @param mldom:mldom 객체
+ * @param autostart:자동 시작 여부
+ */
+function player_play()
+{
+    if (this.player.url == '') return;
+    this.player.controls.play();
+}
+/**
+ * 미디어를 정지한다.
+ */
+function player_stop()
+{
+    if (this.player.url == '') return;
+    this.player.controls.stop();
+}
+/**
+ * 미디어를 일시정지한다.
+ */
+function player_pause()
+{
+    if (this.player.url == '') return;
+    this.player.controls.pause();
+}
+/**
+ * 미디어를 빨리감기한다.
+ */
+function player_fastForward()
+{
+    this.player.controls.fastForward();
+}
+/**
+ * 미디어를 되감기한다.
+ */
+function player_fastReverse()
+{
+    this.player.controls.fastReverse();
+}
+/**
+ * 미디어의 재생 속도를 조정한다.
+ * @param no:재생 속도
+ */
+function player_setRate(no)
+{
+    this.player.settings.rate = no;
+    this.player.controls.play();
+}
+/**
+ * 미디어의 소리를 증가한다.
+ * @param no:재생 속도
+ */
+function player_addVolume(no)
+{
+    this.player.settings.volume += no;
+}
+/**
+ * 미디어의 소리를 조정한다.
+ * @param no:소리크기(0~100)
+ */
+function player_setVolume(no)
+{
+    this.player.settings.volume = no;
+}
+/**
+ * 미디어의 소리를 없앤다.
+ * @param v:음소거 여부(boolean)
+ */
+function player_mute(v)
+{
+    this.player.settings.mute = v;
+}
+/**
+ * 미디어의 크기를 조정한다.
+ * @param no:미디어 크기(0~4). 0:정상,1:절반,2:두배,3:전체화면
+ */
+function player_resize(no)
+{
+    if (this.player.url == '') return;
+    var width = this.player.currentMedia.imageSourceWidth;
+    var height = this.player.currentMedia.imageSourceHeight;
+    var width_ctrl = 5;
+    var height_ctrl = 75;
+    if (this.player.uiMode == 'invisible') {
+        width_ctrl = 0;
+        height_ctrl = 0;
+    } else if (this.player.uiMode == 'none') {
+        width_ctrl = 0;
+        height_ctrl = 0;
+    } else if (this.player.uiMode == 'mini') {
+        width_ctrl = 5;
+        height_ctrl = 75;
+    } else if (this.player.uiMode == 'full') {
+        width_ctrl = 5;
+        height_ctrl = 75;
+    }
+    this.player.stretchToFit = 'true';
+    switch (no) {
+        case 0:
+         this.player.width = width + width_ctrl;
+         this.player.height = height + height_ctrl;
+         break;
+        case 1:
+         this.player.width = 0.5 * width + width_ctrl;
+         this.player.height = 0.5 * height + height_ctrl;
+         break;
+        case 2:
+         this.player.width = 2 * width + width_ctrl;
+         this.player.height = 2 * height + height_ctrl;
+         break;
+        case 3:
+         if (this.player.playState == 3) this.player.fullScreen = 'true';
+         break;
+    }
+}
+/**
+ * 미디어의 위치를 처음으로 옮긴다.
+ */
+function player_setPosStart()
+{
+    this.player.controls.currentPosition = 0;
+}
+/**
+ * 미디어의 위치를 마지막으로 옮긴다.
+ */
+function player_setPosEnd()
+{
+    if (this.player.url == '') return;
+    this.player.controls.currentPosition = this.player.currentMedia.duration;
+}
+/**
+ * 미디어의 위치를 옮긴다
+ * @param no:옮길 위치(단위 초)
+ */
+function player_setPos(no)
+{
+    this.player.controls.currentPosition = no;
+}
+/**
+ * 미디어의 위치를 해당 프레임으로 옮긴다
+ * @param no:옮길 위치(단위 프레임)
+ */
+function player_setPosFrame(no)
+{
+    if (this.player.url == '') return;
+    var fps = this.player.network.encodedFrameRate;
+    if (fps > 0)
+        this.player.controls.currentPosition = no / fps;
+    
+}
+/**
+ * 미디어의 위치를 증가시킨다
+ * @param no:옮길 위치(단위 초)
+ */
+function player_addPos(no)
+{
+    this.player.controls.currentPosition += no;
+}
+/**
+ * 미디어의 위치를 해당 프레임만큼 증가시킨다
+ * @param no:옮길 위치(단위 프레임)
+ */
+function player_addPosFrame(no)
+{
+    if (this.player.url == '') return;
+    var fps = this.player.network.encodedFrameRate;
+    if (fps > 0)
+        this.player.controls.currentPosition += no / fps;
+}
+
+/**
+ * 초기화
+ */
+function init_me()
+{
+ var url = "mms://mmc.daumcast.net/mmc/1/500/0902600000101h.wmv";
+ var autostart = true;
+ 
+ // 플래이어 세팅
+ WindowMediaPlayer(Player,url,autostart);
+}
+//-->
+</script>
+</head>
+<body onload="init_me()" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
+<table>
+    <tr height="500">
+        <td width="700">
+            <OBJECT ID="Player" CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" width="325" height="315">
+                <PARAM name="URL" value="mms://mmc.daumcast.net/mmc/1/500/0902600000101h.wmv"/>
+                <PARAM name="autostart" value="false"/>
+                <PARAM name="enablecontextmenu" value="0"/>
+            </object>
+        </td>
+    </tr>
+</table>
+<!--
+<b>초기화 : </b>
+<input type="button" value="초기화" onclick="init_me()">
+<br>
+-->
+<b>재생 : </b>
+<input type="button" value="재생" onclick="player_play();">
+<input type="button" value="정지" onclick="player_stop();">
+<input type="button" value="일시정지" onclick="player_pause();">
+<input type="button" value="빨리감기" onclick="player_fastForward();">
+<input type="button" value="되감기" onclick="player_fastReverse();">
+<input type="button" value="2배속" onclick="player_setRate(2);">
+<input type="button" value="3배속" onclick="player_setRate(3);">
+<br/>
+<b>소리 : </b>
+<input type="button" value="+10" onclick="player_addVolume(10);">
+<input type="button" value="-10" onclick="player_addVolume(-10);">
+<input type="button" value="0%" onclick="player_setVolume(0);">
+<input type="button" value="100%" onclick="player_setVolume(100);">
+&nbsp;&nbsp;음소거 <input type="checkbox" onclick="player_mute(this.checked);">
+<br/>
+<b>화면 : </b>
+<input type="button" value="정상" onclick="player_resize(0);">
+<input type="button" value="50%" onclick="player_resize(1);">
+<input type="button" value="200%" onclick="player_resize(2);">
+<input type="button" value="전체화면" onclick="player_resize(3);">
+<br/>
+<b>이동 : </b>
+<input type="button" value="처음" onclick="player_setPosStart();">
+<input type="button" value="마지막" onclick="player_setPosEnd();">
+<input type="button" value="처음에서 20초" onclick="player_setPos(20);">
+<input type="button" value="10초전" onclick="player_addPos(-10);">
+<input type="button" value="10초후" onclick="player_addPos(10);">
+<input type="button" value="처음에서 200프레임" onclick="player_setPosFrame(200);">
+<input type="button" value="100프레임전" onclick="player_addPosFrame(-100);">
+<input type="button" value="100프레임후" onclick="player_addPosFrame(100);">
+<br/>
+</body>
+</html>
+[출처] 자바스크립트로 미디어플레이어 제어하기|작성자 실시리
+

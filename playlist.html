@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<style type="text/css">
+			a:link { color:white;}
+			a:visited { color:white;}
+			a:active { color:white;}
+			a:hover { color:white;}
+		</style>
+		<script language="javascript">
+			function getStrCuts(str, max)
+			{
+				ns = str.substr(0, max);
+				
+				if (ns.length != str.length)
+				{
+					ns = ns + "...";
+				}
+			return ns;
+			}
+
+		</script>
+<body bgcolor="black" text="white">
+			<script language="javascript">
+				for(countsong=0;countsong<31;countsong++)
+				{
+					document.write('<a href="javascript:newplay(countsong)" target="player">');
+					document.write("<font size='1'>"+getStrCuts(song[countsong],29)+"</font><br>");
+					document.write('</a>');
+				}
+			</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<html>
+	<head>
+
+	</head>
+	<SCRIPT LANGUAGE="JAVASCRIPT">
+		function play1(){ //재생함수
+		 document.player.play()
+		 }
+		function pause1(){//일시정지함수
+		 document.player.pause()
+		 }
+		function stop1(){//정지함수
+		 document.player.stop()
+		}
+	</script>
+<body bgcolor="black" text="white" link="white" alink="white" vlink="white">
+	<p align="right">
+		<script type="text/javascript" LANGUAGE="Javascript">
+				a=new Date();
+				song=new Array();		//배경음악 목록 배열
+					song[0]="carry_on_my_wayward_son.mid";
+					song[1]="coldplay-viva_la_vida.mid";
+					song[2]="Dust_in_the_Wind.mid";
+					song[3]="muse - plug in baby.mid";
+					song[4]="muse - sing for absolution.mid";
+					song[5]="muse - time is running out.mid";
+					song[6]="oasis - champagne super nova.mid";
+					song[7]="oasis-cigarettesandalcohol.mid";
+					song[8]="oasis-dont_look_back_in_anger.mid";
+					song[9]="oasis-somemightsay.mid";
+					song[10]="queen - dont stop me now.mid";
+					song[11]="queen - i was born to love you.mid";
+					song[12]="queen - keep yourself alive.mid";
+					song[13]="sfmricag.mid";
+					song[14]="Kansas - Carry On Wayward Son.mp3";
+					song[15]="Kansas - Dust In The Wind.mp3";
+					song[16]="Kansas - Song For America.mp3";
+					song[17]="Muse - Bliss.mp3";
+					song[18]="Muse - Exogenesis_ Symphony, Pt. 1_ Over.mp3";
+					song[19]="Muse - Exogenesis_ Symphony, Pt. 2_ Cros.mp3";
+					song[20]="Muse - Feeling Good.mp3";
+					song[21]="Muse - Resistance.mp3";
+					song[22]="Muse - Soldier's Poem.mp3";
+					song[23]="Muse - Starlight.mp3";
+					song[24]="Muse - Take a Bow.mp3";
+					song[25]="Muse - Uprising.mp3";
+					song[26]="Nirvana - Come As You Are.mp3";
+					song[27]="Oasis - Don't Look Back In Anger.mp3";
+					song[28]="Oasis- Some Might Say.mp3";
+					song[29]="Starsailor - In The Crossfire.mp3";
+					song[30]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+
+				var month=new Array(12);	//월 변환
+				var day=new Array(7);		//요일 변환
+				month[0]="1월 ";
+				month[1]="2월 ";
+				month[2]="3월 ";
+				month[3]="4월 ";
+				month[4]="5월 ";
+				month[5]="6월 ";
+				month[6]="7월 ";
+				month[7]="8월 ";
+				month[8]="9월 ";
+				month[9]="10월";
+				month[10]="11월";
+				month[11]="12월";
+				day[0]="일요일 ";
+				day[1]="월요일 ";
+				day[2]="화요일 ";
+				day[3]="수요일 ";
+				day[4]="목요일 ";
+				day[5]="금요일 ";
+				day[6]="토요일 ";
+				index = Math.floor(Math.random() * song.length); //배경음악 랜덤변수.
+				//document.write(a.getYear()+"년 "+month[a.getMonth()]+a.getDate()+"일  "+day[a.getDay()]+a.getHours()+"시 "+a.getMinutes()+"분");
+				document.write('<embed src="'+"bgm/"+song[index]+'" loop="100" Name="player" Hidden="true">');
+				document.write("<table align='center' width='800'><tr height='5'>");
+				document.write("<td width='50'><font size='1'>Year</font></td>");
+				for(county=5;county>0;county--)
+				{
+					document.write("<td width='150'>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7f7f7f>");
+						if((a.getYear()-county+3)==a.getYear())
+						{
+							document.write("<font color='red'>");
+						}
+					document.write(a.getYear()-county+3+" ");
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</table>");
+				document.write("<table align='center' width='800'><tr>");
+				document.write("<td width='50'><font size='1'>Month</font></td>");
+				for(countm=1;countm<13;countm++)
+				{
+					document.write("<td width='62'>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7F7F7F>");
+						if(countm-1==a.getMonth())
+						{
+							document.write("<font color='red'>");
+						}
+					document.write(countm);
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</table>");
+				document.write("<table align='center' width='800'><tr>");
+				document.write("<td width='67'><font size='1'>Date</font></td>");
+				for(countda=1;countda<32;countda++)
+				{
+					document.write("<td width='24'>");
+					document.write("<center>");
+					document.write("<font size='1' color=#7F7F7F>");
+						if(countda==a.getDate())
+						{
+							document.write("<font color='red'>");
+						}
+					document.write(countda);
+					document.write("</font>");
+					document.write("</center>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</table>");
+				document.write("<table align='center' width='800'><tr>");
+				document.write("<td width='50'><font size='1'>Day</font></td>");
+				for(countd=0;countd<7;countd++)
+				{
+					document.write("<td width='107'>");
+					document.write("<font size='1' color=#7F7F7F>");
+						if(day[countd]==day[a.getDay()])
+						{
+							document.write("<font color='red'>");
+						}
+					document.write("<center>");
+					document.write(day[countd]);
+					document.write("</center>");
+					document.write("</font>");
+					document.write("</td>");
+				}
+				document.write("</tr>");
+				document.write("</table>");	
+		</script>
+		<script language="javascript" for="player" Event="EndOfStream()">//재생이 끝나면 새로고침
+			setTimeout("javascript:location.reload()", 500);
+		</script>
+	</p>
+	<DIV Id="player" style="position:absolute; left:10px; top:40px;>
+	<table width="200" height="40">
+		<tr>
+			<td width="10">
+				♬
+			</td>
+			<td>
+				<script language="javascript">
+					document.write('<marquee width="200" height="20" behavior=scroll direction=left loop=infinite><font size="2">'+song[index]+'</font></marquee>');
+				</script>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<br>
+					<input type="button" name="stop" value="STOP" size="3"	onclick="stop1()">
+					<input type="button" name="Play" value="PLAY"size="3"	onclick="play1()">
+					<input type="button" name="PAUSE" value="PAUSE"size="3"	onclick="pause1()">
+					<input type="button" name="NEXT" value="RND"size="3" onclick="javascript:location.reload()">
+			</td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+	<head>
+
+		<style type="text/css">
+			#buttonb
+			{
+				background-color:black;
+				color:white;
+				border:0;
+				scroll-color:black;
+			}
+		</style>
+		<script type="text/javascript">
+		var next=0;
+			function fnPlay()
+			{
+				var movieContent="";
+				var selectObj = document.getElementById("sel"); 
+				movieContent += '<object id="mid" type="video/x-ms-wmv" width="300" height="50" > ';
+				movieContent += '<param name="src" value="'+document.all.sel.options[document.all.sel.selectedIndex].value+'"></param> ';
+				movieContent += '</object>';
+				document.all.show.innerHTML =document.all.sel.options[document.all.sel.selectedIndex].value;
+ 				document.all.player1.innerHTML = movieContent;
+				document.all.mid.play();
+				selectObj.options[document.all.sel.selectedIndex].selected = "selected"; 
+			}
+			function rnd()
+			{
+				var movieContent="";
+				var selectObj = document.getElementById("sel"); 
+				var rnd=Math.floor(Math.random()*30)+1;
+				movieContent += '<object id="mid" type="video/x-ms-wmv" width="300" height="50" > ';
+				movieContent += '<param name="src" value="'+document.all.sel.options[rnd].value+'"></param> ';
+				movieContent += '</object>';
+				document.all.show.innerHTML =document.all.sel.options[rnd].value;
+				document.all.player1.innerHTML = movieContent;
+				document.all.mid.play();
+				selectObj.options[rnd].selected = "selected"; 
+			}
+			function fnnext()
+			{
+				var selectObj = document.getElementById("sel"); 
+				if(document.all.sel.selectedIndex=='30')
+					selectObj.options[1].selected = "selected";
+				else
+					selectObj.options[document.all.sel.selectedIndex+1].selected = "selected"; 
+				fnPlay();
+			}
+			function fnpre()
+			{
+				var selectObj = document.getElementById("sel"); 
+				if(document.all.sel.selectedIndex=='0')
+					selectObj.options[30].selected = "selected";
+				else
+					selectObj.options[document.all.sel.selectedIndex-1].selected = "selected"; 
+				fnPlay();
+			}
+			function fnStop()
+			{
+				document.all.mid.stop();
+			}
+			function fnpause()
+			{
+				document.all.mid.pause();
+			}
+		</script>
+	</head>
+<body bgcolor="black" text="white" onload="rnd();">
+  <Marquee width=180 loop="infinite" behavior="scroll" direction="left">
+  <div id="show" width="400" height="100">
+  </div> 
+  </marquee><br>
+  <input type="button" id="buttonb" name="pre" value = " ≪ " onclick="fnpre();" ></input>
+  <input type="button" id="buttonb" name="play" value = "▶" onclick="fnPlay();" ></input>&nbsp
+  <input type="button" id="buttonb" name="pause" value = "||" onclick="fnpause();" ></input>
+  <input type="button" id="buttonb" name="stop" value = "■" onclick="fnStop();" ></input>
+  <input type="button" id="buttonb" name="rnd" value = " ≫ " onclick="fnnext();" ></input>
+  <input type="button" id="buttonb" name="rnd" value = " ? " onclick="rnd();" ></input>
+  <br>
+  <select name="sel" id=buttonb size="18" width="190" style="width:190px">
+		<script language="javascript">
+			song=new Array();		//배경음악 목록 배열
+				song[0]="carry_on_my_wayward_son.mid";
+				song[1]="coldplay-viva_la_vida.mid";
+				song[2]="Dust_in_the_Wind.mid";
+				song[3]="muse - plug in baby.mid";
+				song[4]="muse - sing for absolution.mid";
+				song[5]="muse - time is running out.mid";
+				song[6]="oasis - champagne super nova.mid";
+				song[7]="oasis-cigarettesandalcohol.mid";
+				song[8]="oasis-dont_look_back_in_anger.mid";
+				song[9]="oasis-somemightsay.mid";
+				song[10]="queen - dont stop me now.mid";
+				song[11]="queen - i was born to love you.mid";
+				song[12]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+				song[13]="sfmricag.mid";
+				song[14]="Kansas - Carry On Wayward Son.mp3";
+				song[15]="Kansas - Dust In The Wind.mp3";
+				song[16]="Kansas - Song For America.mp3";
+				song[17]="Muse - Bliss.mp3";
+				song[18]="Muse - Exogenesis_ Symphony, Pt. 1_ Over.mp3";
+				song[19]="Muse - Exogenesis_ Symphony, Pt. 2_ Cros.mp3";
+				song[20]="Muse - Feeling Good.mp3";
+				song[21]="Muse - Resistance.mp3";
+				song[22]="Muse - Soldier's Poem.mp3";
+				song[23]="Muse - Starlight.mp3";
+				song[24]="Muse - Take a Bow.mp3";
+				song[25]="Muse - Uprising.mp3";
+				song[26]="Nirvana - Come As You Are.mp3";
+				song[27]="Oasis - Don't Look Back In Anger.mp3";
+				song[28]="Oasis- Some Might Say.mp3";
+				song[29]="Starsailor - In The Crossfire.mp3";
+				song[30]="Starsailor - Starsailor - Love Is Here - Poor Misguided Fool.mp3";
+				for(i=0;i<31;i++)
+				{
+					document.write('<option value="'+song[i]+'">'+song[i]+'</option>');
+				}
+		</script>
+  </select>
+  <br>
+  <div id="player1" width="400" height="100" style="display:none">
+  </div>
+ 		<script language="javascript" for="mid" event="EndOfStream()">
+			setTimeout("rnd()", 100);
+		</script>
+</html>

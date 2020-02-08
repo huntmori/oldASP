@@ -1,0 +1,12 @@
+<SPAN id="player"></SPAN><br>
+<OBJECT id=Player name=Player type=audio/x-pn-realaudio-plugin width=hidden height=hidden classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6 125>
+<PARAM NAME="URL" VALUE="bgm/home.wpl">
+<PARAM name="autoStart" value="true">
+<param name="volume" value="50">
+<param name="loop" value="false">
+<PARAM NAME="playCount" VALUE="8">
+</object>
+ 
+<script language="JavaScript" event="playStateChange(NewState)" for="Player">
+	player.innerHTML = Player.currentMedia.durationString;
+</script>
